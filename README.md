@@ -3,7 +3,7 @@
 The single page web site with 24 hours temperature history and 
 online weather condition in 4 main places. The data are providing by https://openweathermap.org/
 
-![Screen](https://raw.githubusercontent.com/okb3wok/weather/master/screen.png)
+![Screen](https://github.com/okb3wok/weather/blob/master/screen.png?raw=true)
 
 ## Project structure
 
