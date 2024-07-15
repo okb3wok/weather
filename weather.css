@@ -1,0 +1,357 @@
+@charset "utf-8";
+
+/* CSS RESET */
+/* Preferred box-sizing value */
+*, *::before, *::after{box-sizing:border-box; margin:0;}
+
+a { text-decoration:none; color:inherit; cursor:pointer; }
+button {background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer;}
+figure {margin:0;}
+input::-moz-focus-inner {border:0; padding:0; margin:0;}
+ul, ol, dd {margin:0; padding:0; list-style:none;}
+h1, h2, h3, h4, h5, h6 {margin:0; font-size:inherit; font-weight:inherit;}
+p {margin:0; }
+cite {font-style: normal;}
+fieldset {border-width:0; padding:0; margin:0;}
+
+input, textarea {
+    outline:none;
+}
+
+
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+
+html{
+    font-size: 1px; /*for using REM units*/
+}
+
+/* MAIN STYLES */
+
+:root {
+    --main-radius: 15rem;
+    --page-padding: 15rem;
+    --font-size: 22rem;
+    --font-family: system-ui, sans-serif, Verdana;
+    --line-height: 1.55;
+    --letter-spacing: 0.2rem;
+    --gray-color: #555;
+    --font-color: #333333;
+    --font-color-inverted:#ffffff;
+    --title-color: #362456;
+    --prime-color: #1e24ef;
+    --secondary-color: #6F00AF;
+    --tertiary-color: #f8f8f8;
+    --meta-color: #122090;
+    --site-bg-color: #bbbbbb;
+    --site-bg-gradient: linear-gradient(135deg, rgba(179, 212, 255, 0.31) 0%, rgb(249, 251, 255) 100%);
+    --title-branding-gradient: -webkit-linear-gradient(0deg, var(--prime-color) 30%, var(--secondary-color) 90%);
+    --page-bg-color: #ffffff;
+    --link-color: #004593;
+    --link-decoration: inherit;
+    --link-color-hover:#004593;
+    --blur-color: rgba(255, 255, 255, 0.25);
+    --img-filter: grayscale(0);
+    --footer-bg: #eff5f9;
+    --footer-text-color: #5d5d5d;
+    --font-weight: 300;
+    --button-border-color: transparent;
+    --button-font-color: var(--font-color-inverted);
+
+
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8363a1 0%, #74a8c3 100%);
+    line-height: var(--line-height);
+    min-width: 310px;
+
+}
+
+body a {
+    text-decoration: underline;
+}
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20rem;
+}
+
+
+.weather {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.weather-item{
+    flex: 0 1 24%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20rem;
+    border-radius: var(--main-radius);
+    background-color: var(--blur-color);
+    padding: 20px;
+
+}
+
+.weather-item-name{
+    flex:1 0 100%;
+    color: var(--title-color);
+    font-size: calc(var(--font-size)*1.5);
+}
+
+
+.weather-item-date{
+    flex:1 0 100%;
+    line-height: 1.75;
+    font-size: calc(var(--font-size) * 0.8);
+    color: var(--gray-color);
+}
+
+
+.weather-item-temp{
+    line-height: 1.2;
+    flex:1 0 100%;
+    font-size: calc(var(--font-size) * 1.8);
+}
+
+.weather-item-icon{
+    flex:1 1 100%;
+    line-height: 1;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    align-items: center;
+    font-variant: all-small-caps;
+    font-size: calc(var(--font-size) * 0.8);
+}
+
+.weather-item-icon div{
+    flex: 0 1 70%;
+}
+
+.weather-item-icon img{
+    display: block;
+}
+
+.weather-item-wind{
+    padding-top: 20rem;
+    flex:1 1 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 0 30rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.weather-item-wind-speed{
+    flex:1 1 auto;
+}
+
+.weather-item-wind-descr{
+    padding-top: 10rem;
+    flex:1 1 100%;
+    font-size: calc(var(--font-size) * 0.6);
+}
+
+.weather-item-wind-arrow {
+    margin-left: 20rem;
+    border: 2px solid #172f48;
+    height: 40rem;
+    width: 1rem;
+    position: relative;
+    display:inline-block;
+}
+
+.weather-item-wind-arrow:after{
+    content: '';
+    position: absolute;
+    border: 2px solid #172f48;
+    height: 10rem;
+    width: 1rem;
+    bottom:-2px;
+    left: -6px;
+    transform: rotate(135deg);
+}
+
+.weather-item-wind-arrow:before{
+    content: '';
+    position: absolute;
+    border: 2px solid #172f48;
+    height: 10rem;
+    width: 1rem;
+    bottom:-2px;
+    left: 2px;
+    transform: rotate(45deg);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-family);
+    font-weight: calc(var(--font-weight) + 300);
+    color: var(--title-color);
+    word-break: break-word;
+}
+
+h1 {
+    font-size: calc(var(--font-size) * 1.8);
+    line-height: 1.2;
+    margin-bottom: 20rem;
+    text-align: center;
+}
+
+
+.button {
+    font-weight: var(--font-weight);
+    padding: 4rem 8rem;
+    display: inline-block;
+    font-size: var(--font-size);
+    color: var(--meta-color);
+    background-color: var(--page-bg-color);
+    border-radius: var(--main-radius);
+    border: 2px solid var(--meta-color);
+    cursor: pointer;
+    transition: all .3s ease;
+    text-decoration: var(--link-decoration);
+}
+
+.button:hover{
+    color: var(--page-bg-color);
+    background-color: var(--meta-color);
+    border-radius: var(--main-radius);
+}
+
+.button:disabled{
+    cursor: default;
+    opacity: 0.25;
+    color: var(--page-bg-color);
+    background-color: var(--meta-color);
+    border-radius: var(--main-radius);
+}
+
+
+.weather-chart{
+    opacity: 0;
+    background: white;
+    padding: 10px 0;
+    margin-bottom: 30rem;
+    border-radius: var(--main-radius);
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    min-height: 50vh;
+    transition: opacity 1s ease;
+}
+
+
+.weather-chart canvas{
+    min-width: 100%;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .wrapper{
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    :root {
+        --main-radius: 0;
+    }
+
+    .weather-item{
+        flex: 0 1 49%;
+    }
+
+    .weather-item-temp{
+        line-height: 1.2;
+        flex:1 0 100%;
+        font-size: calc(var(--font-size) * 1.3);
+    }
+}

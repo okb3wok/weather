@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="robots" content="noindex">
+  <script src="charts.js" ></script>
+  <link href="weather.css" rel="stylesheet">
+  <title>{{title}}</title>
+</head>
+<body>
+<div class="wrapper">
+  <h1>{{title}}</h1>
+
+  <div  class="weather-chart" >
+    <canvas id="myChart" ></canvas>
+  </div>
+
+  <div id="weather" class="weather">
+
+  </div>
+
+  Источник данных: <a href="https://openweathermap.org/" target="_blank">OpenWeather</a>
+
+</div>
+
+<script src="weather.js" type="module"></script>
+</body>
+</html>
