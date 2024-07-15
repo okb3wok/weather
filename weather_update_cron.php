@@ -1,5 +1,6 @@
 <?php
 include "openweather.php";
+include 'open_weather_api.php';
 
 $weather = new OpenWeather();
 
@@ -51,8 +52,8 @@ if($matches_5min){
         }
 
         if(!$is_current_temp_written){
-            $current = json_decode($weather->getweatherJson($cities[$i]),true);
-            print_r($place_weather);
+            $current = json_decode($weather->getweatherJson($cities[$i], $API_SECRET_KEY),true);
+            //print_r($place_weather);
             $place_weather['hourly'][] = array( "dt" =>$matches_5min[1], "t" => $current['main']['temp_max']);
             $place_weather['current'] = $current;
 

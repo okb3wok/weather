@@ -17,6 +17,7 @@ online weather condition in 4 main places. The data are providing by https://ope
 ├── weather.css                 - CSS Styles
 ├── weather.js                  - Main JS Script
 ├── settings.json               - JSON settings
+├── open_weather_api.php        - API access key
 ├── openweather.php             - Class for getting JSON from OpenWeather API
 └── weather_upadate_cron.php    - Update jsons every 5 minutes
 ```
